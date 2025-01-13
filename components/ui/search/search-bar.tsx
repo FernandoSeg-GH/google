@@ -1,13 +1,20 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSearch } from "@/context";
 
-const SearchBar = () => {
-    const [query, setQuery] = useState("");
+type SearchBarProps = {
+    searchedTerm?: boolean;
+};
+
+const SearchBar = ({ searchedTerm }: SearchBarProps) => {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const initialQuery = searchParams?.get("query") || "";
+    const [query, setQuery] = useState<string>(searchedTerm ? initialQuery : "");
     const { dispatch } = useSearch();
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value);

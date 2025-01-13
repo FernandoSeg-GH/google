@@ -17,7 +17,7 @@ const Navbar = ({ searchable }: NavbarProps) => {
                               <Link href="/">
                                     <Logo width={120} />
                               </Link>
-                              <SearchBar />
+                              <SearchBar searchedTerm />
                         </div>
                   ) : (
                         <div className='flex items-center gap-2'>
