@@ -8,6 +8,14 @@ import Fallback from "./fallback";
 import { useSearch } from "@/context";
 import { getFakeData, SearchResponse } from "@/actions/data";
 
+export const Loaders = () => {
+    return <div className="flex flex-col gap-8 items-center justify-start w-full min-h-screen bg-white">
+        {Array.from({ length: 8 }).map((_, i) => (
+            <Skeleton key={i} />
+        ))}
+    </div>
+}
+
 const SearchResults: React.FC = () => {
     const { state, dispatch } = useSearch();
     const { loading } = state;
@@ -56,13 +64,7 @@ const SearchResults: React.FC = () => {
     }
 
     if (loading) {
-        return (
-            <div className="flex flex-col gap-8 items-center justify-start w-full min-h-screen bg-white">
-                {Array.from({ length: 8 }).map((_, i) => (
-                    <Skeleton key={i} />
-                ))}
-            </div>
-        );
+        return <Loaders />
     }
 
     return (
