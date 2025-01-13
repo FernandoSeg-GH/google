@@ -14,13 +14,13 @@ interface State {
     query: string;
 }
 
-const initialState: State = {
+export const initialState: State = {
     selectedResult: null,
     loading: true,
     query: "",
 };
 
-function reducer(state: State, action: Action): State {
+export function reducer(state: State, action: Action): State {
     switch (action.type) {
         case "SELECT_RESULT":
             return { ...state, selectedResult: action.payload };
