@@ -1,16 +1,16 @@
-import type { Config } from "@jest/types";
+import type { JestConfigWithTsJest } from "ts-jest";
 
-const config: Config.InitialOptions = {
+const config: JestConfigWithTsJest = {
+  preset: "ts-jest",
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
     "^@/(.*)$": "<rootDir>/$1",
   },
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+    "^.+\\.(ts|tsx)$": "ts-jest",
   },
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };
 
 export default config;
