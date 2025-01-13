@@ -23,6 +23,7 @@ const SearchBar = ({ initialQuery, onQueryChange, onSearch }: SearchBarProps) =>
             setLocalQuery(query);
             onQueryChange(query);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
