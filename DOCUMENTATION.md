@@ -12,7 +12,7 @@ For this build I will use the following:
 
 You may refer to my repository in github to check on commits for each of the features I work on (this will help keep a good version control)
 
-1. UI - Components & Pages
+1. UI - Components & Pages ✅ **DONE**
    First, I'll replicate the screenshots into components and pages (search page via params)
 
 - “Homepage” - ✅ **DONE** (commit "Homepage Initial UI")
@@ -27,6 +27,12 @@ You may refer to my repository in github to check on commits for each of the fea
   ● If no results are found, a message should be displayed
   ● If no search term is used, another message should be displayed
 
-2. State - Initial State, Managements, Actions
-3. API - Fetch Data , update state & components
-4. E2E Testing
+2. State Context, Actions - ✅ **DONE** (commit "App Build with Context, final UI, & Actions")
+   ● Context creation
+   ● Initial State & reducer Actions setup (selecting a rresult, loading...)
+   ● Data fetching (using faker mock data on server action)
+
+3. Testing - ✅ **DONE** (commit "App Testing")
+   ● Unit Test for getFakeData(), as a USER i will retrieve results from the getFakeData() server action
+   ● Unit Test for testing users actions in the UI (via state reducer actions)
+   ● Integreation Test for selecting a result and display the card
