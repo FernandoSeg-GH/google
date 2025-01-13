@@ -15,7 +15,10 @@ describe("Unit Test: getting data from getFakeData() function", () => {
     const data = await getFakeData(query);
 
     if (data.length === 0) {
-      console.error(`No results found for query: "${query}".`);
+      console.warn(
+        `No results found for query: "${query}".`,
+        "Search with a different query..."
+      );
     } else if (
       !data.every(
         (item) =>
@@ -28,7 +31,7 @@ describe("Unit Test: getting data from getFakeData() function", () => {
       console.log(`Results matched for query: "${query}"`);
     }
 
-    console.log(`get data with query: "${query}":`, data);
+    console.warn(`Success!! Results for: "${query}":`, data);
 
     expect(
       data.every(
