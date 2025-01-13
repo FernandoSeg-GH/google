@@ -7,7 +7,7 @@ Dear recruiting team,
 As per the requirements, this documentation file will walk you through the build. For this build I will use the following:
 
 - NextJs 15 for server side actions/components
-- Typescript for typesafety and ESLINT for code formating
+- Typescript for type safety and ESLINT for code formatting
 - Considering no UI library must be used, I will style components with the TailwindCSS framework (the utility classes will allows us to create a fully responsive UI)
 - Native fetch() for API data fetching
 - Jest for creating unit and integration tests
