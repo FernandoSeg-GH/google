@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { useSearch } from "@/context";
 
 type Props = {
@@ -20,9 +19,13 @@ const SearchButton = ({ disabled }: Props) => {
     return (
         <button
             disabled={disabled || !state.query}
-            className={`px-4 py-3 rounded-md ${disabled ? "bg-[#f8f9fa] text-[#e3e5e9]" : "bg-[#f2f2f2] text-black font-medium"
+            className={`px-4 py-3 rounded-md ${disabled || !state.query
+                ? "bg-[#f8f9fa] text-[#e3e5e9] cursor-not-allowed"
+                : "bg-[#f2f2f2] text-black font-medium hover:bg-[#e6e6e6]"
                 }`}
             onClick={handleSearch}
+            aria-disabled={disabled || !state.query}
+            aria-label="Search"
         >
             Buscar
         </button>

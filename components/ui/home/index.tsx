@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSearch } from "@/context";
 import { useRouter } from "next/navigation";
 import SearchBar from "../search-bar";
@@ -9,6 +9,11 @@ import SearchButton from "./button";
 const Home = () => {
     const { state, dispatch } = useSearch();
     const router = useRouter();
+
+    useEffect(() => {
+        dispatch({ type: "SET_QUERY", payload: "" });
+    }, [dispatch]);
+
 
     const handleQueryChange = (newQuery: string) => {
         dispatch({ type: "SET_QUERY", payload: newQuery });

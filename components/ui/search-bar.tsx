@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSearch } from "@/context";
 
 type SearchBarProps = {
     initialQuery: string;
@@ -12,6 +13,8 @@ type SearchBarProps = {
 const SearchBar = ({ initialQuery, onQueryChange, onSearch }: SearchBarProps) => {
     const [localQuery, setLocalQuery] = useState(initialQuery);
     const router = useRouter();
+
+    const { dispatch } = useSearch();
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
@@ -43,11 +46,22 @@ const SearchBar = ({ initialQuery, onQueryChange, onSearch }: SearchBarProps) =>
         }
     };
 
+    const clearInput = () => {
+        setLocalQuery("");
+        onQueryChange("");
+
+        dispatch({ type: "SET_QUERY", payload: "" });
+    };
+
     return (
-        <div className="border rounded-full w-full max-w-md flex items-center pl-3 focus-within:ring-2 focus-within:ring-blue-500">
+        <div
+            className="border rounded-full w-full max-w-[90%] md:max-w-md flex items-center pl-3 focus-within:ring-2 focus-within:ring-blue-500"
+            role="search"
+            aria-label="Search bar"
+        >
             <Image
                 src="/icons/search.svg"
-                alt="Search"
+                alt="Search icon"
                 width={25}
                 height={25}
                 priority
@@ -58,7 +72,18 @@ const SearchBar = ({ initialQuery, onQueryChange, onSearch }: SearchBarProps) =>
                 value={localQuery}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
+                aria-label="Search input"
+                role="textbox"
             />
+            {localQuery && (
+                <button
+                    onClick={clearInput}
+                    className="px-2 py-1 text-gray-500 hover:text-black"
+                    aria-label="Clear search input"
+                >
+                    <span aria-hidden="true">✕</span>
+                </button>
+            )}
         </div>
     );
 };
