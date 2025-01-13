@@ -44,13 +44,11 @@ const Fallback: React.FC<Props> = ({ searchTerm }) => {
             ) : (
                 <div>
                     <p className="text-gray-700">
-                        Start your search by exploring the following options:
-                    </p>
-                    <p className="mt-2 text-gray-600">
+                        Try looking for:{' '}
                         {suggestions.map((suggestion, index) => (
                             <span key={index}>
                                 <span className="font-semibold">{SuggestionsEnum[suggestion]}</span>
-                                {index < suggestions.length - 1 && ', '}
+                                {index < suggestions.length - 1 && ', '}.
                             </span>
                         ))}
                     </p>
