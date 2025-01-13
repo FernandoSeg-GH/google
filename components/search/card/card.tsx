@@ -21,21 +21,22 @@ const Card: React.FC<CardProps> = ({
 
     return (
         <div
-            className="
-        fixed inset-0 flex items-center justify-center 
-        bg-black bg-opacity-50 z-50 
-        lg:relative lg:bg-transparent
-      "
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50  lg:relative lg:bg-transparent "
             onClick={() => dispatch({ type: "CLEAR_SELECTED" })}
         >
             <div
+                role="dialog"
+                aria-labelledby="dialog-title"
+                aria-describedby="dialog-description"
                 ref={cardRef}
-                className="bg-white p-4 rounded-lg max-w-sm shadow-md relative"
+                className="bg-white p-4 rounded-lg min-w-[280px] max-w-sm shadow-md relative"
                 onClick={(e) => e.stopPropagation()}
             >
                 <Image
                     src={imageUrl}
                     alt={title}
+                    aria-labelledby="dialog-title"
+                    aria-describedby="dialog-description"
                     width={200}
                     height={200}
                     className="w-full h-48 object-cover"
@@ -50,8 +51,12 @@ const Card: React.FC<CardProps> = ({
                     >
                         {linkUrl}
                     </a>
-                    <h3 className="text-lg font-semibold mt-2 text-gray-800">{title}</h3>
-                    <p className="text-gray-600 text-sm mt-1">{description}</p>
+                    <h3 id="dialog-title" role="heading" className="text-lg font-semibold mt-2 text-gray-800">
+                        {title}
+                    </h3>
+                    <p id="dialog-description" className="text-gray-600 text-sm mt-1">
+                        {description}
+                    </p>
                 </div>
             </div>
         </div>
