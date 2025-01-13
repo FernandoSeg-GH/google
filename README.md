@@ -1,88 +1,112 @@
-# Google Clone Project
+# Agile Content - Frontend Technical Test
 
-## Author: **Fernando Segre**
+## Author: [Fernando Segre](https://www.linkedin.com/in/fernando-segre/)
 
-## Goal of the test
+Dear recruiting team,
 
-The purpose of the test is to validate your technical and organizational skills. It’s not a
-big deal if you can’t finish it, we prefer to have an incomplete clean and functional code
-than a badly organized and “ugly” code.
-You can use any framework (preferably React) or external resources you need or even
-vanilla js, but don’t forget that the goal is to show us your competences.
-All styling has to be done without any external UI library.
+As per the requirements, this documentation file will walk you through the build. For this build I will use the following:
 
-## Specifications
+- NextJs 15 for server side actions/components
+- Typescript for typesafety and ESLINT for code formating
+- Considering no UI library must be used, I will style components with the TailwindCSS framework (the utility classes will allows us to create a fully responsive UI)
+- Native fetch() for API data fetching
+- Jest for creating unit and integration tests
+- Context API for creating a state, and easily dispatch actions (via reducers) to interact with the application
 
-The application to develop is quite simple (you can refer to the screenshots for more
-details):
+---
 
-- “Homepage”
+1. UI - Components & Pages ✅ **DONE**
+   First, I'll replicate the screenshots into components and pages (search page via params)
+
+- “Homepage” - ✅ **DONE** (commit "Homepage Initial UI")
   ● A search input that allows you to search for animals, the retrieved results will be
   displayed on the results page
   ● Header and footer are just visual elements, they are not interactive
 
-- “Results page”
+- “Results page” - ✅ **DONE** (commit "Search Page Initial UI Initial UI")
   ● A search input is displayed in the header to be able to search again
   ● All retrieved results are displayed as a list
   ● When clicking on an item title, additional information will be displayed in a box
   ● If no results are found, a message should be displayed
   ● If no search term is used, another message should be displayed
 
-- “Data”
-  ● All data is created using faker.js (https://github.com/faker-js/faker)
-  ● Images are from random animals, so it’s ok if they don’t match the selected item
-  ● Animals are searched by both title and type
+2. State Context, Actions - ✅ **DONE** (commit "App Build with Context, final UI, & Actions")
+   ● Context creation
+   ● Initial State & reducer Actions setup (selecting a rresult, loading...)
+   ● Data fetching (using faker mock data on server action)
 
-## Objectives
+3. Testing - ✅ **DONE** (commit "App Testing")
+   ● Unit Test for getFakeData(), as a USER i will retrieve results from the getFakeData() server action
+   ● Unit Test for testing users actions in the UI (via state reducer actions)
+   ● Integreation Test for selecting a result and display the card
 
-● Build this application as a production grade code.
-● Focus on replicating the given screenshots/design
-● Provide at least one test validating some use cases
-● What would you have done differently if you had more time? Why?
+4. What would I have done differently if I had more time?
+   ● Replace the mocked data with a live API integration to simulate a real, and not randomized, scenarios.
 
-## Getting Started
+---
 
-### Clone the Repository
+### Running the Project
 
-First, clone the repository:
+#### This guide will help you set up and run the project locally.
+
+- **Live URL**: [google-alpha-rose.vercel.app](https://google-alpha-rose.vercel.app)
+- **Repository URL**: [GitHub Repository](https://github.com/FernandoSeg-GH/google)
+
+---
+
+### Prerequisites
+
+Ensure you have **Node.js**: Version 20 or higher, installed in your environment.
+
+### Installation Steps
+
+#### 1. **Clone the Repository**
+
+Open your terminal and run:
 
 ```bash
-git clone git@github.com:FernandoSeg-GH/google.git
-```
-
-### Install Dependencies
-
-Navigate to the project directory and install the required dependencies:
-
-```bash
+git clone https://github.com/FernandoSeg-GH/google.git
 cd google
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
-### Run the Development Server
+#### 2. **Install Dependencies**
 
-Once the dependencies are installed, start the development server:
+Install the required packages using npm or yarn:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Using npm
+npm install
+
+# Or, using yarn
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 3. **Run the Development Server**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start the local development server:
 
-## Documentation
+```bash
+# Using npm
+npm run dev
 
-Detailed documentation is available in the root of the project: [DOCUMENTATION.md](DOCUMENTATION.md).
+# Or, using yarn
+yarn dev
+```
+
+The application will now be running locally. Open your browser and navigate to:
+
+```
+http://localhost:3000
+```
+
+### Running Tests
+
+To run the unit and integration tests:
+
+```bash
+# Using npm
+npm run test
+
+# Or, using yarn
+yarn test
+```
