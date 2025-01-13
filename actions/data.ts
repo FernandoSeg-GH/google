@@ -20,7 +20,7 @@ export const getFakeData = async (
 ): Promise<SearchResponse[]> => {
   const delay = new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const data = Array.from({ length: 100 }).map((_, index) => {
+  const data = Array.from({ length: 40 }).map((_, index) => {
     const type = getType();
     return {
       id: index + 1,
